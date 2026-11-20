@@ -1,0 +1,8 @@
+target/
+build/
+node_modules/
+.dev.vars
+.env
+.embuild/
+.wrangler/
+.alchemy/

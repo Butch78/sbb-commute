@@ -1,0 +1,26 @@
+{
+  "name": "sbb-commute-infra",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "bun@1.4.0",
+  "scripts": {
+    "login": "bun --bun alchemy login",
+    "build:worker": "cd ../worker && CARGO_TARGET_DIR=$HOME/.cache/cargo-target-sbb-worker worker-build --release",
+    "plan": "bun run build:worker && bun --bun alchemy plan --stage prod",
+    "deploy": "bun run build:worker && bun --bun alchemy deploy --stage prod --yes",
+    "destroy": "bun --bun alchemy destroy --stage prod --yes",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@alchemy.run/cloudflare": "2.0.0-beta.87",
+    "@effect/platform-bun": "^4.1.4",
+    "@effect/platform-node": "^4.1.4",
+    "alchemy": "2.0.0-beta.87",
+    "effect": "^4.1.4"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^5.9.0"
+  }
+}

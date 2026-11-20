@@ -1,0 +1,29 @@
+[package]
+name = "sbb-commute-firmware"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.77"
+
+[[bin]]
+name = "sbb-commute-firmware"
+harness = false
+
+[dependencies]
+esp-idf-svc = "0.53"
+log = "0.4"
+anyhow = "1"
+epd-waveshare = "0.6"
+embedded-graphics = "0.8"
+u8g2-fonts = { version = "0.8", features = ["embedded_graphics_textstyle"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+[build-dependencies]
+embuild = "0.33"
+
+[profile.release]
+opt-level = "s"
+
+[profile.dev]
+debug = true
+opt-level = "z"
